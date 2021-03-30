@@ -1,9 +1,10 @@
 import React, {useRef, useReducer, useMemo, useCallback} from 'react';
-import './App.css';
+import './App.scss';
 import Counter from './components/views/Counter/Counter';
 import UserList from './components/views/UserList/UserList';
 import CreateUser from './components/views/CreateUser/CreateUser';
 import useInputs from './hooks/useInputs';
+import Button from './components/views/Button/Button';
 
 function countActiveUsers(users) {
   console.log('활성 사용자 수를 세는중 ...');
@@ -104,14 +105,42 @@ function App() {
 
   return (
     <UserDispatch.Provider value={dispatch}>
-      <div style={{display:'flex', alignItems: 'center', flexDirection:'column'}}>
-        {/*<Counter /> */}
+      <div className="App">
+        {/*
+        <Counter />
 
         <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate}/>
         <UserList users={users}/>
         <div> 활성사용자 수 : {count} </div>
 
         <br />
+        */}
+        <div className="buttons">
+          <Button size="large">BUTTON</Button>
+          <Button>BUTTON</Button>
+          <Button size="small">BUTTON</Button>
+        </div>
+        <div className="buttons">
+          <Button size="large" color="gray">BUTTON</Button>
+          <Button color="gray">BUTTON</Button>
+          <Button size="small" color="gray">BUTTON</Button>
+        </div>
+        <div className="buttons">
+          <Button size="large" color="pink">BUTTON</Button>
+          <Button color="pink">BUTTON</Button>
+          <Button size="small" color="pink">BUTTON</Button>
+        </div>
+        <div className="buttons">
+          <Button size="large" outline>BUTTON</Button>
+          <Button color="gray" outline>BUTTON</Button>
+          <Button size="small" color="pink" outline>BUTTON</Button>
+        </div>
+        <div className="buttons">
+          <Button size="large" fullWidth>BUTTON</Button>
+          <Button size="large" color="gray" fullWidth>BUTTON</Button>
+          <Button size="large" color="pink" fullWidth>BUTTON</Button>
+        </div>
+        
       </div>
     </UserDispatch.Provider>
   );
