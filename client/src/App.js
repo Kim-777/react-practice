@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.scss';
 import CheckBox from './components/views/CheckBox/CheckBox';
-
+import EventPractice from './components/views/EventPractice/EventPractice';
 
 function App() {
 
@@ -16,16 +16,19 @@ function App() {
   return (
       <div>
 
-        <CheckBox onChange={onChange} checked={check}>
+        {/* <CheckBox onChange={onChange} checked={check}>
           다음 약관에 모두 동의
         </CheckBox>
         <p>
           <b>check : </b>
           {check ? 'true' : 'false'}
-        </p>
+        </p> */}
+        <EventPractice />
       </div>
 
   );
 }
 
 export default App;
+
+
