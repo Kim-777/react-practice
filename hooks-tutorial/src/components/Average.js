@@ -1,57 +1,56 @@
-import React, {useState, useMemo, useCallback, useRef} from 'react'
+import React, { useState, useMemo, useCallback } from 'react';
 
-const getAverage = (numbers) => {
-    console.log('평균값 계산즁~');
-    if(numbers.length === 0) return 0;
+const getAverage = numbers => {
+    console.log('평균값 계산 중 ...');
+    if (numbers.length === 0 ) return 0;
     const sum = numbers.reduce((a, b) => a + b, 0);
-    return sum / numbers.length
-} 
+    return sum / numbers.length;
+}
 
 const Average = () => {
 
     const [list, setList] = useState([]);
     const [number, setNumber] = useState('');
-    const inputEl = useRef(null);
 
-    const onChange =useCallback(
-        (e) => {
-            setNumber(e.target.value);
+    const onChange = useCallback(
+        e => {
+            setNumber(e.target.value)
         },
         [],
-    );
+    )
 
-    const onClick = useCallback(
+    const onInsert = useCallback(
         () => {
-            if(number==='') return alert('아무것도 입력되지 않았습니다.');
-            if(!isFinite(number)) {
-                return alert('숫자를 입력해주세요.')
-            }
-    
-            setList(list => list.concat(parseInt(number)));
+            setList([...list, parseInt(number)]);
             setNumber('');
-            inputEl.current.focus();
         },
         [number, list],
     )
+
+    const remove = useCallback(index => {
+        
+        const tmpList = [...list];
+        tmpList.splice(index, 1);
+        setList(tmpList);
+    }, [list])
 
     const avg = useMemo(() => getAverage(list), [list]);
 
     return (
         <div>
-            <input value={number} onChange={onChange} ref={inputEl}/>
-            <br/>
-            <button onClick={onClick}>button</button>
-            <br/>
+            <input value={number} onChange={onChange} />
+            <button onClick={onInsert}>등록</button>
             <ul>
                 {list.map((value, index) => (
-                    <li key={index}>{value}</li>
+                    <li key={index} onDoubleClick={()=>{remove(index)}}>{value}</li>
                 ))}
             </ul>
             <div>
-                <b>평균값 : </b> {avg} 
+                <d>평균값 :</d> {avg}
             </div>
         </div>
     )
 }
+
 
 export default Average
