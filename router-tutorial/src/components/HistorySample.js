@@ -1,34 +1,31 @@
-import React, {useEffect} from 'react'
+import React, { Component } from 'react'
 
-const HistorySample = ({history}) => {
+export default class HistorySample extends Component {
 
-    let unblock= false;
-
-    const handleGoBack = () => {
-        history.goBack();
+    handleGoBack = () => {
+        this.props.history.goBack();
     }
 
-    const handleGoHome = () => {
-        history.push("/")
+    handleGoHome = () => {
+        this.props.history.push('/');
     }
 
-    useEffect(() => {
-        
-        unblock = history.block('정말 떠나실 건가요?');
+    componentDidMount() {
+        this.unblock = this.props.history.block('정말 떠나실 건가요?');
+    }
 
-        return () => {
-            if(unblock) {
-                unblock();
-            }
+    componentWillUnmount() {
+        if(this.unblock) {
+            this.unblock();
         }
-    })
+    }
 
-    return (
-        <div>
-            <button onClick={handleGoBack}>뒤로</button>
-            <button onClick={handleGoHome}>홈으로</button>
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleGoBack}>뒤로</button>
+                <button onClick={this.handleGoHome}>홈으로</button>
+            </div>
+        )
+    }
 }
-
-export default HistorySample

@@ -1,29 +1,28 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react';
 import ColorContext from '../contexts/color';
 
 const ColorBox = () => {
 
-    const {state} = useContext(ColorContext)
+    const { state } = useContext(ColorContext)
 
     return (
         <>
             <div
                 style={{
-                    width: `64px`,
-                    height: `64px`,
+                    width: '64px',
+                    height: '64px',
                     background: state.color
                 }}
             />
             <div
                 style={{
-                    width: `34px`,
-                    height: `34px`,
+                    width: '32px',
+                    height: '32px',
                     background: state.subcolor
                 }}
             />
         </>
     )
 }
-
 
 export default ColorBox

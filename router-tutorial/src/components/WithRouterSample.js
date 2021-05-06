@@ -1,7 +1,7 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const WithRouterSample = ({ location, match, history}) => {
+const WithRouterSample = ({ location, match, history }) => {
     return (
         <div>
             <h4>location</h4>
@@ -16,8 +16,7 @@ const WithRouterSample = ({ location, match, history}) => {
                 rows={7}
                 readOnly
             />
-            <br/>
-            <button onClick={()=> history.push('/')}>홈으로</button>
+            <button onClick={() => history.push('/')}>홈으로</button>
         </div>
     )
 }

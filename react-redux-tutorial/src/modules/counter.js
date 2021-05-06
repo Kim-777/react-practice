@@ -1,26 +1,25 @@
 import { createAction, handleActions } from 'redux-actions';
 
+// action type
 const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
 
-// export const increase = () => ({type:INCREASE});
-// export const decrease = () => ({type:DECREASE});
-
-// createAction으로 액션 생성 함수 만들기
-
+// action create function
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 
+// initial State
 const initialState = {
     number: 0
 };
 
+// reducer
 const counter = handleActions(
     {
-        [INCREASE] : (state, action) => ({number: state.number + 1}),
-        [DECREASE] : (state, action) => ({number: state.number - 1}),
+        [INCREASE]: (state) => ({number: state.number + 1}),
+        [DECREASE]: (state) => ({number: state.number - 1})
     },
-    initialState
+    initialState,
 )
 
 export default counter;
