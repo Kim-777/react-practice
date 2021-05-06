@@ -8,12 +8,12 @@ function App() {
   const [form, setForm] = useState({name: '', username: ''});
   const [data, setData] = useState({
     array: [],
-    uselessValue: null
+    uselessValue: null,
   })
 
   const onChange = useCallback(
     e => {
-      const {name, value} = e.target;
+      const { name, value } = e.target;
       setForm(
         produce(form, draft => {
           draft[name] = value;
@@ -34,20 +34,19 @@ function App() {
 
       setData(
         produce(data, draft => {
-          draft.array.push(info)
+          draft.array.push(info);
         })
-      )
+      );
 
       setForm({
         name: '',
-        username: ''
-      });
+        username: '',
+      })
 
       nextId.current += 1;
     },
-    [data, form.name, form.username],
+    [data, form.name, form.username]
   );
-
 
   const onRemove = useCallback(
     id => {
@@ -55,11 +54,10 @@ function App() {
         produce(data, draft => {
           draft.array.splice(draft.array.findIndex(info => info.id === id), 1);
         })
-      );
+      )
     },
     [data],
-  )
-
+  );
 
   return (
     <div>
