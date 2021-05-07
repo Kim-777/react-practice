@@ -10,6 +10,6 @@ const Counter = ({ number, onIncrease, onDecrease }) => {
             </div>
         </div>
     )
-};
+}
 
-export default Counter;
+export default Counter

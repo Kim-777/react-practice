@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const Sample = ({ loadingPost, loadingUsers, post, users}) => {
+const Sample = ({ loadingPost, loadingUsers, post, users }) => {
     return (
         <div>
             <section>
@@ -31,4 +31,4 @@ const Sample = ({ loadingPost, loadingUsers, post, users}) => {
     )
 }
 
-export default Sample
+export default Sample;
